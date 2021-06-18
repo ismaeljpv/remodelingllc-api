@@ -1,0 +1,56 @@
+### Get Roles
+GET http://localhost:8085/role
+Content-Type: application/json
+
+### Get Roles By ID
+GET http://localhost:8085/role/1
+Content-Type: application/json
+
+### Create Role
+POST http://localhost:8085/role
+Content-Type: application/json
+
+{
+ "role": "USER",
+ "status": "ACTIVE"
+}
+
+### Get Users By ID
+GET http://localhost:8085/user/1
+Content-Type: application/json
+
+### Create User
+POST http://localhost:8085/user
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "ingsoft14",
+  "firstname": "Ismael",
+  "lastname": "Peña",
+  "status": "ACTIVE",
+  "roles": [{
+    "id": 1,
+    "role": "ADMIN",
+    "status": "ACTIVE"
+  }]
+}
+
+### Get Company By ID
+GET http://localhost:8085/company/1
+Content-Type: application/json
+
+### Get Post By ID
+GET http://localhost:8085/post/12
+Content-Type: application/json
+
+### Get Service By ID
+GET http://localhost:8085/services/2
+Content-Type: application/json
+
+### Get Service Thumbnail By ID
+GET http://localhost:8085/services/thumbnail/2
+Content-Type: application/json
+
+
+
