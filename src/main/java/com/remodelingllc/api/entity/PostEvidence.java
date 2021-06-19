@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @NoArgsConstructor
 @Getter
@@ -25,7 +26,9 @@ public class PostEvidence {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pictureExtension;
     private String videoUrl;
+    @NotNull(message = "Media Type cant be null")
     private MediaType type;
+    @NotNull(message = "Post cant be null")
     private int postId;
 
     @Override

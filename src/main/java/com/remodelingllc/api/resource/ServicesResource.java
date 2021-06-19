@@ -7,13 +7,18 @@ import com.remodelingllc.api.interfaces.ThumbnailData;
 import com.remodelingllc.api.service.ServicesService;
 import com.remodelingllc.api.util.ContentTypeHelper;
 import com.remodelingllc.api.util.ResponseEntityHelper;
-import org.springframework.http.*;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
+@Log4j2
 @RestController
 public class ServicesResource {
 
@@ -26,6 +31,11 @@ public class ServicesResource {
     @GetMapping(value = "/services", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Services> findAll() {
         return servicesService.findAll();
+    }
+
+    @GetMapping(value = "/services", params = {"page", "size"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Page<Services> findAllActive(@RequestParam("page") final int page, @RequestParam("size") final int size) {
+        return servicesService.findAllActive(page, size);
     }
 
     @GetMapping(value = "/services/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -63,7 +73,11 @@ public class ServicesResource {
             services.setDescription(model.getDescription());
             services.setStatus(model.getStatus());
             services.setThumbnail(model.getThumbnail().getBytes());
-            services.setThumbnailExtension(model.getThumbnail().getContentType());
+            // Validate content type
+            String contentType = model.getThumbnail().getContentType();
+            MediaType mediaType = ContentTypeHelper.getMediaType(Objects.requireNonNull(contentType));
+            log.info("Valid media type {}/{}", mediaType.getType(), mediaType.getSubtype());
+            services.setThumbnailExtension(contentType);
             return services;
         } catch (IOException e) {
             throw new BadRequestException("Invalid File Format");

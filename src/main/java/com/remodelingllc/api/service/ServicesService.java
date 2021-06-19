@@ -5,6 +5,8 @@ import com.remodelingllc.api.entity.Services;
 import com.remodelingllc.api.exception.EntityNotFoundException;
 import com.remodelingllc.api.interfaces.ThumbnailData;
 import com.remodelingllc.api.repository.ServicesRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,9 +25,13 @@ public class ServicesService {
         return (List<Services>) servicesRepository.findAll();
     }
 
+    public Page<Services> findAllActive(final int page, final int size) {
+        return servicesRepository.findAllByStatus(Status.ACTIVE, PageRequest.of(page, size));
+    }
+
     public Services findById(final int id) {
         Optional<Services> service = servicesRepository.findById(id);
-        if (service.isEmpty()) {
+        if (service.isEmpty() || service.get().getStatus() == Status.INACTIVE) {
             throw new EntityNotFoundException("Service Not Found");
         }
         return service.get();

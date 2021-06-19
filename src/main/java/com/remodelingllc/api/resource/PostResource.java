@@ -7,13 +7,18 @@ import com.remodelingllc.api.interfaces.ThumbnailData;
 import com.remodelingllc.api.service.PostService;
 import com.remodelingllc.api.util.ContentTypeHelper;
 import com.remodelingllc.api.util.ResponseEntityHelper;
-import org.springframework.http.*;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
+@Log4j2
 @RestController
 public class PostResource {
 
@@ -26,6 +31,11 @@ public class PostResource {
     @GetMapping(value = "/post", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Post> findAll() {
         return postService.findAll();
+    }
+
+    @GetMapping(value = "/post", params = {"page", "size"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Page<Post> findAllActive(@RequestParam("page") final int page, @RequestParam("size") final int size) {
+        return postService.findAllActive(page, size);
     }
 
     @GetMapping(value = "/post/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -64,7 +74,11 @@ public class PostResource {
            post.setStatus(model.getStatus());
            post.setThumbnail(model.getThumbnail().getBytes());
            post.setTags(model.getTags());
-           post.setThumbnailExtension(model.getThumbnail().getContentType());
+           // Validate content type
+           String contentType = model.getThumbnail().getContentType();
+           MediaType mediaType = ContentTypeHelper.getMediaType(Objects.requireNonNull(contentType));
+           log.info("Valid media type {}/{}", mediaType.getType(), mediaType.getSubtype());
+           post.setThumbnailExtension(contentType);
            post.setUserId(model.getUserId());
            return post;
        } catch (IOException e) {

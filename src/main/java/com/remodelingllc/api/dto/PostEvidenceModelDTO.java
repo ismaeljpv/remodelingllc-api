@@ -18,6 +18,7 @@ public class PostEvidenceModelDTO {
     private String videoUrl;
     @NotNull(message = "Media Type cant be null")
     private MediaType type;
+    @NotNull(message = "Post cant be null")
     private int postId;
 
 }

@@ -7,14 +7,17 @@ import com.remodelingllc.api.interfaces.PictureData;
 import com.remodelingllc.api.service.PostEvidenceService;
 import com.remodelingllc.api.util.ContentTypeHelper;
 import com.remodelingllc.api.util.ResponseEntityHelper;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Objects;
 
+@Log4j2
 @RestController
 public class PostEvidenceResource {
 
@@ -24,9 +27,11 @@ public class PostEvidenceResource {
         this.postEvidenceService = postEvidenceService;
     }
 
-    @GetMapping(value = "/postEvidence", params = {"postId"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<PostEvidence> findByPostId(@RequestParam("postId") final int postId) {
-        return postEvidenceService.findByPostId(postId);
+    @GetMapping(value = "/postEvidence", params = {"postId", "page", "size"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Page<PostEvidence> findByPostId(@RequestParam("postId") final int postId,
+                                           @RequestParam("page") final int page,
+                                           @RequestParam("size") final int size) {
+        return postEvidenceService.findAllByPostId(postId, page, size);
     }
 
     @GetMapping(value = "/postEvidence/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -43,6 +48,12 @@ public class PostEvidenceResource {
 
     @PostMapping(value = "/postEvidence", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public PostEvidence save(@Validated @ModelAttribute final PostEvidenceModelDTO evidence) {
+        if (evidence.getType() == com.remodelingllc.api.entity.enums.MediaType.VIDEO && evidence.getVideoUrl() == null) {
+            throw new BadRequestException("Video URL cant be null");
+        }
+        if (evidence.getType() == com.remodelingllc.api.entity.enums.MediaType.PICTURE && evidence.getPicture() == null) {
+            throw new BadRequestException("Picture cant be null");
+        }
         return postEvidenceService.save(this.convertModelToPostEvidence(evidence));
     }
 
@@ -57,10 +68,13 @@ public class PostEvidenceResource {
             evidence.setId(model.getId());
             evidence.setPostId(model.getPostId());
             evidence.setType(model.getType());
-            evidence.setVideoUrl(model.getVideoUrl());
             if (model.getPicture() != null) {
                 evidence.setPicture(model.getPicture().getBytes());
-                evidence.setPictureExtension(model.getPicture().getContentType());
+                // Validate content type
+                String contentType = model.getPicture().getContentType();
+                MediaType mediaType = ContentTypeHelper.getMediaType(Objects.requireNonNull(contentType));
+                log.info("Valid media type {}/{}", mediaType.getType(), mediaType.getSubtype());
+                evidence.setPictureExtension(contentType);
             }
             return evidence;
         } catch (IOException e) {

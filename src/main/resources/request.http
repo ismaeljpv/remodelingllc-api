@@ -41,7 +41,7 @@ GET http://localhost:8085/company/1
 Content-Type: application/json
 
 ### Get Post By ID
-GET http://localhost:8085/post/12
+GET http://localhost:8085/post/14
 Content-Type: application/json
 
 ### Get Service By ID
@@ -50,6 +50,18 @@ Content-Type: application/json
 
 ### Get Service Thumbnail By ID
 GET http://localhost:8085/services/thumbnail/2
+Content-Type: application/json
+
+### Get evidence by post ID paginated
+GET http://localhost:8085/postEvidence?postId=13&page=0&size=3
+Content-Type: application/json
+
+### Get active posts paginated
+GET http://localhost:8085/post?page=0&size=3
+Content-Type: application/json
+
+### Get active services paginated
+GET http://localhost:8085/services?page=0&size=3
 Content-Type: application/json
 
 

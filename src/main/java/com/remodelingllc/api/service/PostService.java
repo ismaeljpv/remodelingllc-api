@@ -5,6 +5,8 @@ import com.remodelingllc.api.entity.Post;
 import com.remodelingllc.api.exception.BadRequestException;
 import com.remodelingllc.api.interfaces.ThumbnailData;
 import com.remodelingllc.api.repository.PostRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,9 +26,13 @@ public class PostService {
         return (List<Post>) postRepository.findAll();
     }
 
+    public Page<Post> findAllActive(final int page, final int size) {
+        return postRepository.findAllByStatus(Status.ACTIVE, PageRequest.of(page, size));
+    }
+
     public Post findById(final int id) {
         Optional<Post> post = postRepository.findById(id);
-        if (post.isEmpty()) {
+        if (post.isEmpty() || post.get().getStatus() == Status.INACTIVE) {
             throw new BadRequestException("Post Not Found");
         }
         return post.get();
