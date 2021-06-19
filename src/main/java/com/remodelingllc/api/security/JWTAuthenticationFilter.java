@@ -10,6 +10,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +40,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         try {
             var creds = new ObjectMapper()
                     .readValue(req.getInputStream(), com.remodelingllc.api.entity.User.class);
-
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             creds.getUsername(),
@@ -73,7 +73,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withClaim("status", user.getStatus().getStatus())
                 .sign(HMAC512(SECRET.getBytes()));
         res.setHeader(HEADER_STRING, TOKEN_PREFIX + token);
-        res.addHeader("Access-Control-Expose-Headers", "Authorization");
         res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");
         userService.updateLastLogin(user);

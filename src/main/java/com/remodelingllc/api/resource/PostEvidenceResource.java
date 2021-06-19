@@ -11,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,6 +48,7 @@ public class PostEvidenceResource {
     }
 
     @PostMapping(value = "/postEvidence", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public PostEvidence save(@Validated @ModelAttribute final PostEvidenceModelDTO evidence) {
         if (evidence.getType() == com.remodelingllc.api.entity.enums.MediaType.VIDEO && evidence.getVideoUrl() == null) {
             throw new BadRequestException("Video URL cant be null");
@@ -58,6 +60,7 @@ public class PostEvidenceResource {
     }
 
     @DeleteMapping(value = "/postEvidence/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void delete(@PathVariable final int id) {
         postEvidenceService.delete(id);
     }

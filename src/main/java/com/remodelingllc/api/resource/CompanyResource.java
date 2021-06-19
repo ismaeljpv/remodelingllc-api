@@ -3,6 +3,7 @@ package com.remodelingllc.api.resource;
 import com.remodelingllc.api.entity.Company;
 import com.remodelingllc.api.service.CompanyService;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,11 +22,13 @@ public class CompanyResource {
     }
 
     @PostMapping(value = "/company", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Company findById(@Validated @RequestBody final Company company) {
         return companyService.save(company);
     }
 
     @PutMapping(value = "/company", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Company update (@Validated @RequestBody final Company company) {
         return companyService.update(company);
     }

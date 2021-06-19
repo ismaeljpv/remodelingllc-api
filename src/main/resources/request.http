@@ -1,14 +1,17 @@
 ### Get Roles
 GET http://localhost:8085/role
 Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNDE4Mzk5NywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.5UZ_o5Fpc8Fg7zcnJGFZ1QlsPf0g3OORQRbhzaOdTK7DbzPaSSvnkc4lOt1SREyWb4QPUoR0w3EofA62IghHZA
 
 ### Get Roles By ID
 GET http://localhost:8085/role/1
 Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNDE4Mzk5NywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.5UZ_o5Fpc8Fg7zcnJGFZ1QlsPf0g3OORQRbhzaOdTK7DbzPaSSvnkc4lOt1SREyWb4QPUoR0w3EofA62IghHZA
 
 ### Create Role
 POST http://localhost:8085/role
 Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNDE4Mzk5NywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.5UZ_o5Fpc8Fg7zcnJGFZ1QlsPf0g3OORQRbhzaOdTK7DbzPaSSvnkc4lOt1SREyWb4QPUoR0w3EofA62IghHZA
 
 {
  "role": "USER",
@@ -18,17 +21,18 @@ Content-Type: application/json
 ### Get Users By ID
 GET http://localhost:8085/user/1
 Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNDE4Mzk5NywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.5UZ_o5Fpc8Fg7zcnJGFZ1QlsPf0g3OORQRbhzaOdTK7DbzPaSSvnkc4lOt1SREyWb4QPUoR0w3EofA62IghHZA
 
 ### Create User
 POST http://localhost:8085/user
 Content-Type: application/json
 
 {
-  "username": "admin",
+  "username": "admin2",
   "password": "ingsoft14",
-  "firstname": "Ismael",
-  "lastname": "Peña",
-  "status": "ACTIVE",
+  "firstname": "Jesus",
+  "lastname": "Viloria",
+  "status": "INACTIVE",
   "roles": [{
     "id": 1,
     "role": "ADMIN",
@@ -41,7 +45,11 @@ GET http://localhost:8085/company/1
 Content-Type: application/json
 
 ### Get Post By ID
-GET http://localhost:8085/post/14
+GET http://localhost:8085/post/13
+Content-Type: application/json
+
+### Get Services
+GET http://localhost:8085/services
 Content-Type: application/json
 
 ### Get Service By ID
@@ -63,6 +71,15 @@ Content-Type: application/json
 ### Get active services paginated
 GET http://localhost:8085/services?page=0&size=3
 Content-Type: application/json
+
+### Login
+POST http://localhost:8085/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "ingsoft14"
+}
 
 
 

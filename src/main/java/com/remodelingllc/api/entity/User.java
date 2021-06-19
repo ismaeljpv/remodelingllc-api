@@ -39,7 +39,7 @@ public class User {
     @NotNull(message = "Status cant be null")
     @Convert(converter = StatusConverter.class)
     private Status status;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
