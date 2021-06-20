@@ -1,5 +1,7 @@
 package com.remodelingllc.api.resource;
 
+import com.remodelingllc.api.dto.GenericMessageDTO;
+import com.remodelingllc.api.dto.PasswordChangeDTO;
 import com.remodelingllc.api.entity.User;
 import com.remodelingllc.api.service.UserService;
 import org.springframework.http.MediaType;
@@ -32,6 +34,19 @@ public class UserResource {
     @PreAuthorize("hasAuthority('ADMIN')")
     public User update(@Validated @RequestBody final User user) {
         return userService.update(user);
+    }
+
+    @GetMapping(value = "/user/password/recovery/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public GenericMessageDTO passwordRecovery(@PathVariable String username) {
+        boolean success = userService.passwordRecovery(username);
+        String message = (success) ? "Password recovery token sended successfully!, please verify your email."
+                : "Oops ! There was an error sendind the recovery token, please try again later.";
+        return new GenericMessageDTO(message, success);
+    }
+
+    @PutMapping(value = "/user/password/change", produces = MediaType.APPLICATION_JSON_VALUE)
+    public User passwordChange(@Validated @RequestBody PasswordChangeDTO passwordChange) {
+        return userService.passwordChange(passwordChange);
     }
 
 }

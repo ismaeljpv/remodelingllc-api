@@ -11,6 +11,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +37,9 @@ public class User {
     private String firstname;
     @NotNull(message = "Lastname cant be null")
     private String lastname;
+    @NotNull(message = "Email cant be null")
+    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)+$", message = "Email not valid")
+    private String email;
     @NotNull(message = "Status cant be null")
     @Convert(converter = StatusConverter.class)
     private Status status;
