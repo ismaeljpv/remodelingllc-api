@@ -73,6 +73,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withClaim("status", user.getStatus().getStatus())
                 .sign(HMAC512(SECRET.getBytes()));
         res.setHeader(HEADER_STRING, TOKEN_PREFIX + token);
+        res.addHeader("Access-Control-Expose-Headers", "*");
         res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");
         userService.updateLastLogin(user);
