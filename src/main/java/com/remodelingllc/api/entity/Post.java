@@ -1,18 +1,18 @@
 package com.remodelingllc.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.remodelingllc.api.entity.converter.StatusConverter;
 import com.remodelingllc.api.entity.converter.TagsConverter;
 import com.remodelingllc.api.entity.enums.Status;
-import com.remodelingllc.api.entity.converter.StatusConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -20,6 +20,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@DynamicUpdate
+@DynamicInsert
 public class Post {
 
     @Id
@@ -34,6 +36,7 @@ public class Post {
     private Status status;
     @NotNull(message = "User cant be null")
     private int userId;
+    private Date createdAt;
     @Convert(converter = TagsConverter.class)
     private List<String> tags;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

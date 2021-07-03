@@ -3,6 +3,7 @@ package com.remodelingllc.api.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.remodelingllc.api.dto.UserTokenDTO;
 import com.remodelingllc.api.entity.enums.Status;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -60,7 +61,14 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
             String status = decodedJWT.getClaim("status").asString();
 
             if (user != null && status.equals(Status.ACTIVE.getStatus())) {
-                return new UsernamePasswordAuthenticationToken(user, null, authorities);
+                var userData = new UserTokenDTO();
+                userData.setSub(user);
+                userData.setStatus(Status.ACTIVE);
+                userData.setId(decodedJWT.getClaim("id").asInt());
+                userData.setUsername(decodedJWT.getClaim("username").asString());
+                userData.setFirstname(decodedJWT.getClaim("firstname").asString());
+                userData.setLastname(decodedJWT.getClaim("lastname").asString());
+                return new UsernamePasswordAuthenticationToken(userData, null, authorities);
             }
             return null;
         }

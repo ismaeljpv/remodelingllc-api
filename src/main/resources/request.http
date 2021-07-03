@@ -23,6 +23,16 @@ GET http://localhost:8085/user/1
 Content-Type: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNDE4Mzk5NywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.5UZ_o5Fpc8Fg7zcnJGFZ1QlsPf0g3OORQRbhzaOdTK7DbzPaSSvnkc4lOt1SREyWb4QPUoR0w3EofA62IghHZA
 
+### Get Users
+GET http://localhost:8085/user
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNTE5NjIwNywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.Bm1YP6SlOyPRKxWwPD2hGSInibzhi5cgB2VSKOB2QORwB7hXC74SfjVkh6Np0xFslxjgq5REnwA0HFwd-lnrCw
+
+### Delete User
+DELETE http://localhost:8085/user/1
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNTE5NjIwNywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.Bm1YP6SlOyPRKxWwPD2hGSInibzhi5cgB2VSKOB2QORwB7hXC74SfjVkh6Np0xFslxjgq5REnwA0HFwd-lnrCw
+
 ### Create User
 POST http://localhost:8085/user
 Content-Type: application/json
@@ -42,6 +52,11 @@ Content-Type: application/json
 
 ### Get Company By ID
 GET http://localhost:8085/company/1
+Content-Type: application/json
+
+### Get Active Post
+GET http://localhost:8085/post
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNTQ0NzU0MiwibGFzdG5hbWUiOiJQZW5hdmlsIiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6IkEifQ.FeOoSOWwz61KnFvZQB7X9Izos4ft5PQTvFbgHmUsAOKbs_iznkF9RTMFvWmsOjPNjPSbHkf9KxsWrBB7QviKhw
 Content-Type: application/json
 
 ### Get Post By ID
@@ -78,7 +93,7 @@ Content-Type: application/json
 
 {
   "username": "admin",
-  "password": "admin1234."
+  "password": "admin12345."
 }
 
 ### Contact Email

@@ -1,12 +1,10 @@
 package com.remodelingllc.api.service;
 
-import com.remodelingllc.api.dto.UserTokenDTO;
 import com.remodelingllc.api.entity.PasswordToken;
 import com.remodelingllc.api.exception.BadRequestException;
 import com.remodelingllc.api.exception.EntityNotFoundException;
 import com.remodelingllc.api.repository.PasswordTokenRepository;
 import org.apache.commons.lang.RandomStringUtils;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;

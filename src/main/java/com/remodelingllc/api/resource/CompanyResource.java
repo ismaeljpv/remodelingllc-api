@@ -23,7 +23,7 @@ public class CompanyResource {
 
     @PostMapping(value = "/company", produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public Company findById(@Validated @RequestBody final Company company) {
+    public Company save(@Validated @RequestBody final Company company) {
         return companyService.save(company);
     }
 

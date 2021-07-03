@@ -22,7 +22,7 @@ public class ServicesService {
     }
 
     public List<Services> findAll() {
-        return (List<Services>) servicesRepository.findAll();
+        return servicesRepository.findAllByStatus(Status.ACTIVE);
     }
 
     public Page<Services> findAllActive(final int page, final int size) {

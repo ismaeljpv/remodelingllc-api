@@ -7,6 +7,7 @@ import com.remodelingllc.api.interfaces.ThumbnailData;
 import com.remodelingllc.api.repository.PostRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class PostService {
     }
 
     public List<Post> findAll() {
-        return (List<Post>) postRepository.findAll();
+        return postRepository.findAllByStatus(Status.ACTIVE, Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Page<Post> findAllActive(final int page, final int size) {

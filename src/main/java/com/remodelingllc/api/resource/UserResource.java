@@ -2,12 +2,15 @@ package com.remodelingllc.api.resource;
 
 import com.remodelingllc.api.dto.GenericMessageDTO;
 import com.remodelingllc.api.dto.PasswordChangeDTO;
+import com.remodelingllc.api.dto.UserDTO;
 import com.remodelingllc.api.entity.User;
 import com.remodelingllc.api.service.UserService;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UserResource {
@@ -16,6 +19,12 @@ public class UserResource {
 
     public UserResource(final UserService userService) {
         this.userService = userService;
+    }
+
+    @GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<UserDTO> findAllActive() {
+        return userService.findAllActive();
     }
 
     @GetMapping(value = "/user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,6 +43,12 @@ public class UserResource {
     @PreAuthorize("hasAuthority('ADMIN')")
     public User update(@Validated @RequestBody final User user) {
         return userService.update(user);
+    }
+
+    @DeleteMapping(value = "/user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void delete(@PathVariable final int id) {
+        userService.inactivateUser(id);
     }
 
     @GetMapping(value = "/user/password/recovery/{username}", produces = MediaType.APPLICATION_JSON_VALUE)

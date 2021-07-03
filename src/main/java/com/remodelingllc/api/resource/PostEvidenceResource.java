@@ -28,6 +28,11 @@ public class PostEvidenceResource {
         this.postEvidenceService = postEvidenceService;
     }
 
+    @GetMapping(value = "/postEvidence", params = {"postId"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Page<PostEvidence> findAllByPostId(@RequestParam("postId") final int postId) {
+        return postEvidenceService.findAllByPostId(postId, 0, Integer.MAX_VALUE);
+    }
+
     @GetMapping(value = "/postEvidence", params = {"postId", "page", "size"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public Page<PostEvidence> findByPostId(@RequestParam("postId") final int postId,
                                            @RequestParam("page") final int page,
@@ -41,7 +46,7 @@ public class PostEvidenceResource {
     }
 
     @GetMapping(value = "/postEvidence/picture/{id}")
-    public ResponseEntity<byte[]> finPicturedById(@PathVariable final int id) {
+    public ResponseEntity<byte[]> findPicturedById(@PathVariable final int id) {
         PictureData pictureData = postEvidenceService.findPictureById(id);
         MediaType mediaType = ContentTypeHelper.getMediaType(pictureData.getPictureExtension());
         return ResponseEntityHelper.responseForFile(pictureData.getPicture(), mediaType);
@@ -78,6 +83,8 @@ public class PostEvidenceResource {
                 MediaType mediaType = ContentTypeHelper.getMediaType(Objects.requireNonNull(contentType));
                 log.info("Valid media type {}/{}", mediaType.getType(), mediaType.getSubtype());
                 evidence.setPictureExtension(contentType);
+            } else if (model.getVideoUrl() != null) {
+                evidence.setVideoUrl(model.getVideoUrl());
             }
             return evidence;
         } catch (IOException e) {
