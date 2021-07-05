@@ -28,6 +28,11 @@ GET http://localhost:8085/user
 Content-Type: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNTE5NjIwNywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.Bm1YP6SlOyPRKxWwPD2hGSInibzhi5cgB2VSKOB2QORwB7hXC74SfjVkh6Np0xFslxjgq5REnwA0HFwd-lnrCw
 
+### Get Users
+GET http://localhost:8085/user?page=0&size=5
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNTU0OTgxOCwibGFzdG5hbWUiOiJQZW5hdmlsIiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6IkEifQ.AdYvYY-x2zkKLrvdABcDzCAdi33ZhywD15DG-7nuWgfp1KiMh15ihb2FmowI3BSrGGuO2lxiA4yIO5qylFpHtw
+
 ### Delete User
 DELETE http://localhost:8085/user/1
 Content-Type: application/json

@@ -2,6 +2,9 @@ package com.remodelingllc.api.repository;
 
 import com.remodelingllc.api.entity.User;
 import com.remodelingllc.api.entity.enums.Status;
+import com.remodelingllc.api.interfaces.UserData;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,6 +17,8 @@ import java.util.Optional;
 public interface UserRepository extends CrudRepository<User, Integer> {
 
     List<User> findAllByStatus(Status status);
+
+    Page<UserData> findAllByStatus(final Status status, final Pageable pageable);
 
     Optional<User> findByUsername(final String username);
 

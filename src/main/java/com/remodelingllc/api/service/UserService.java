@@ -9,10 +9,13 @@ import com.remodelingllc.api.entity.User;
 import com.remodelingllc.api.entity.enums.Status;
 import com.remodelingllc.api.exception.BadRequestException;
 import com.remodelingllc.api.exception.EntityNotFoundException;
+import com.remodelingllc.api.interfaces.UserData;
 import com.remodelingllc.api.repository.UserRepository;
 import com.remodelingllc.api.security.UserDetailsMapper;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -49,6 +52,10 @@ public class UserService implements UserDetailsService  {
                 .map(this::converUserToDTO).collect(Collectors.toList());
     }
 
+    public Page<UserData> findAllActivePaginated(final int page, final int size) {
+        return userRepository.findAllByStatus(Status.ACTIVE, PageRequest.of(page, size));
+    }
+
     public User findById(final int id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isEmpty()) {
@@ -78,6 +85,10 @@ public class UserService implements UserDetailsService  {
         Optional<User> oldUser = userRepository.findById(user.getId());
         if (oldUser.isEmpty()) {
             throw new EntityNotFoundException("User Not Found");
+        }
+        oldUser = userRepository.findByUsername(user.getUsername());
+        if (oldUser.isPresent() && user.getId() != oldUser.get().getId()) {
+            throw new BadRequestException("Username is already taken");
         }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);

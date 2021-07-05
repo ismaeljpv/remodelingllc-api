@@ -4,7 +4,9 @@ import com.remodelingllc.api.dto.GenericMessageDTO;
 import com.remodelingllc.api.dto.PasswordChangeDTO;
 import com.remodelingllc.api.dto.UserDTO;
 import com.remodelingllc.api.entity.User;
+import com.remodelingllc.api.interfaces.UserData;
 import com.remodelingllc.api.service.UserService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
@@ -25,6 +27,13 @@ public class UserResource {
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<UserDTO> findAllActive() {
         return userService.findAllActive();
+    }
+
+    @GetMapping(value = "/user", params = {"page", "size"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public Page<UserData> findAllActivePaginated(@RequestParam("page") final int page,
+                                                 @RequestParam("size") final int size) {
+        return userService.findAllActivePaginated(page, size);
     }
 
     @GetMapping(value = "/user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
