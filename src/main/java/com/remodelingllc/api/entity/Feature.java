@@ -1,6 +1,6 @@
 package com.remodelingllc.api.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,18 +17,19 @@ import javax.validation.constraints.NotNull;
 @Setter
 @ToString
 @Entity
-public class Company {
+public class Feature {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
+    @NotNull(message = "Title cant be null")
+    private String title;
     @NotNull(message = "Description cant be null")
     private String description;
-    @NotNull(message = "Email cant be null")
-    private String email;
-    @NotNull(message = "PhoneNumber cant be null")
-    private String phoneNumber;
-    @NotNull(message = "Company name cant be null")
-    private String name;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private byte[] image;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String imageExtension;
+
 
 }

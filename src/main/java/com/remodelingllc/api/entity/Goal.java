@@ -1,6 +1,5 @@
 package com.remodelingllc.api.entity;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,18 +16,14 @@ import javax.validation.constraints.NotNull;
 @Setter
 @ToString
 @Entity
-public class Company {
+public class Goal {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     @NotNull(message = "Description cant be null")
     private String description;
-    @NotNull(message = "Email cant be null")
-    private String email;
-    @NotNull(message = "PhoneNumber cant be null")
-    private String phoneNumber;
-    @NotNull(message = "Company name cant be null")
-    private String name;
+    @NotNull(message = "Company cant be null")
+    private int companyId;
 
 }

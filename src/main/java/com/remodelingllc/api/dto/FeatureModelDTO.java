@@ -1,6 +1,5 @@
 package com.remodelingllc.api.dto;
 
-import com.remodelingllc.api.entity.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,16 +10,14 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ServiceModelDTO {
+public class FeatureModelDTO {
 
     private int id;
+    @NotNull(message = "Title cant be null")
+    private String title;
     @NotNull(message = "Description cant be null")
     private String description;
-    @NotNull(message = "Service cant be null")
-    private String service;
-    @NotNull(message = "Status cant be null")
-    private Status status;
-    @NotNull(message = "Thumbnail cant be null")
-    private MultipartFile thumbnail;
+    @NotNull(message = "Image cant be null")
+    private MultipartFile image;
 
 }
