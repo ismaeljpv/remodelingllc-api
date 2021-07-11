@@ -26,6 +26,7 @@ public class PostEvidence {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pictureExtension;
     private String videoUrl;
+    private String videoId;
     @NotNull(message = "Media Type cant be null")
     private MediaType type;
     @NotNull(message = "Post cant be null")

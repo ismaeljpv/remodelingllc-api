@@ -78,6 +78,8 @@ public class PostResource {
            post.setStatus(model.getStatus());
            post.setThumbnail(model.getThumbnail().getBytes());
            post.setTags(model.getTags());
+           post.setClient(model.getClient());
+           post.setProjectDate(model.getProjectDate());
            // Validate content type
            String contentType = model.getThumbnail().getContentType();
            MediaType mediaType = ContentTypeHelper.getMediaType(Objects.requireNonNull(contentType));

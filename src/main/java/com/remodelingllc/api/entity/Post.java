@@ -20,7 +20,6 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@DynamicUpdate
 @DynamicInsert
 public class Post {
 
@@ -34,6 +33,10 @@ public class Post {
     @NotNull(message = "Status cant be null")
     @Convert(converter = StatusConverter.class)
     private Status status;
+    @NotNull(message = "Client cant be null")
+    private String client;
+    @NotNull(message = "Project Date cant be null")
+    private Date projectDate;
     @NotNull(message = "User cant be null")
     private int userId;
     private Date createdAt;
@@ -51,6 +54,8 @@ public class Post {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", tags=" + tags +
+                ", client=" + client +
+                ", projectDate=" + projectDate +
                 ", userId=" + userId +
                 '}';
     }

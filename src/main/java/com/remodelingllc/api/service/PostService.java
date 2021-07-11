@@ -52,6 +52,7 @@ public class PostService {
         if (oldPost.isEmpty()) {
             throw new BadRequestException("Post Not Found");
         }
+        post.setCreatedAt(oldPost.get().getCreatedAt());
         return postRepository.save(post);
     }
 

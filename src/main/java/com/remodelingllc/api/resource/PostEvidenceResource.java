@@ -8,6 +8,7 @@ import com.remodelingllc.api.service.PostEvidenceService;
 import com.remodelingllc.api.util.ContentTypeHelper;
 import com.remodelingllc.api.util.ResponseEntityHelper;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -85,6 +86,13 @@ public class PostEvidenceResource {
                 evidence.setPictureExtension(contentType);
             } else if (model.getVideoUrl() != null) {
                 evidence.setVideoUrl(model.getVideoUrl());
+                String videoId = "";
+                if (evidence.getVideoUrl().contains("&")) {
+                    videoId = StringUtils.substringsBetween(evidence.getVideoUrl(), "=", "&")[0];
+                } else {
+                    videoId = evidence.getVideoUrl().split("=")[1];
+                }
+                evidence.setVideoId(videoId);
             }
             return evidence;
         } catch (IOException e) {
