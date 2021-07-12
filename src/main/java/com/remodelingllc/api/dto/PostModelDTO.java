@@ -29,6 +29,7 @@ public class PostModelDTO {
     private Date projectDate;
     @NotNull(message = "User cant be null")
     private int userId;
+    @NotNull(message = "Thumbnail cant be null")
     private MultipartFile thumbnail;
     private List<String> tags;
 

@@ -21,6 +21,7 @@ public class EmailContentService {
         Context context = new Context();
         context.setVariable("message", email.getMessage());
         context.setVariable("phoneNumber", email.getPhoneNumber());
+        context.setVariable("client", email.getName());
         context.setVariable("from", email.getFrom());
         context.setVariable("subject", email.getSubject());
         return templateEngine.process(CONTACT_EMAIL_TEMPLATE, context);

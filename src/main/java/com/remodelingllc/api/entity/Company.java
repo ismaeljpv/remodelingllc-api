@@ -26,6 +26,8 @@ public class Company {
     private String description;
     @NotNull(message = "Email cant be null")
     private String email;
+    @NotNull(message = "Location cant be null")
+    private String location;
     @NotNull(message = "PhoneNumber cant be null")
     private String phoneNumber;
     @NotNull(message = "Company name cant be null")

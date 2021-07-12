@@ -59,6 +59,10 @@ Content-Type: application/json
 GET http://localhost:8085/company/1
 Content-Type: application/json
 
+### Get Team List
+GET http://localhost:8085/team
+Content-Type: application/json
+
 ### Get Active Post
 GET http://localhost:8085/post
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNTQ0NzU0MiwibGFzdG5hbWUiOiJQZW5hdmlsIiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6IkEifQ.FeOoSOWwz61KnFvZQB7X9Izos4ft5PQTvFbgHmUsAOKbs_iznkF9RTMFvWmsOjPNjPSbHkf9KxsWrBB7QviKhw

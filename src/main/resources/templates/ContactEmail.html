@@ -227,8 +227,9 @@
                             <td>
                                 <div class="text" style="padding: 0 2.5em; text-align: justify;">
                                     <h4><strong>Subject</strong>: <span th:text="${subject}"></span></h4>
+                                    <h4><strong>Client</strong>: <span th:text="${client}"></span></h4>
                                     <h4><strong>Client email</strong>: <span th:text="${from}"></span></h4>
-                                    <h4><strong>Client Phone number</strong>: <span th:text="${phoneNumber}"></span></h4>
+                                    <h4><strong>Client Phone number</strong>: <span th:text="${phoneNumber} != null ? ${phoneNumber} : 'Client dont provide phone number' "></span></h4>
                                     <h4><strong>Message</strong>: <span th:text="${message}"></span></h4>
                                 </div>
                             </td>

@@ -17,6 +17,7 @@ public class EmailDTO {
     private String to;
     private String token;
     private String username;
+    private String name;
     @NotNull(message = "Subject cant be null")
     private String subject;
     @NotNull(message = "Email cant be null")
