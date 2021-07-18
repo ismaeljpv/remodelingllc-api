@@ -1,3 +1,12 @@
+### Login
+POST http://localhost:8085/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin12345."
+}
+
 ### Get Roles
 GET http://localhost:8085/role
 Content-Type: application/json
@@ -7,16 +16,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsI
 GET http://localhost:8085/role/1
 Content-Type: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNDE4Mzk5NywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.5UZ_o5Fpc8Fg7zcnJGFZ1QlsPf0g3OORQRbhzaOdTK7DbzPaSSvnkc4lOt1SREyWb4QPUoR0w3EofA62IghHZA
-
-### Create Role
-POST http://localhost:8085/role
-Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNDE4Mzk5NywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.5UZ_o5Fpc8Fg7zcnJGFZ1QlsPf0g3OORQRbhzaOdTK7DbzPaSSvnkc4lOt1SREyWb4QPUoR0w3EofA62IghHZA
-
-{
- "role": "USER",
- "status": "ACTIVE"
-}
 
 ### Get Users By ID
 GET http://localhost:8085/user/1
@@ -64,8 +63,8 @@ GET http://localhost:8085/team
 Content-Type: application/json
 
 ### Get Active Post
-GET http://localhost:8085/post
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNTQ0NzU0MiwibGFzdG5hbWUiOiJQZW5hdmlsIiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6IkEifQ.FeOoSOWwz61KnFvZQB7X9Izos4ft5PQTvFbgHmUsAOKbs_iznkF9RTMFvWmsOjPNjPSbHkf9KxsWrBB7QviKhw
+GET http://localhost:8085/post?page=0&size=5&sort=DESC
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNjY4MTAyNywibGFzdG5hbWUiOiJQZW5hIiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6IkEifQ.EO_VTzat2xG1pV2YWjIMWJhVygsPynO_jYvmhmHgaRQ12OttIwvJO8MrWP-zcTC6aNkH7j8j7ar7eeuw2v2EPg
 Content-Type: application/json
 
 ### Get Post By ID

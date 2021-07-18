@@ -36,19 +36,19 @@ public class GoalResource {
     }
 
     @PostMapping(value = "/goal", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public Goal save(@Validated @RequestBody final Goal goal) {
         return goalService.save(goal);
     }
 
     @PutMapping(value = "/goal", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public Goal update(@Validated @RequestBody final Goal goal) {
         return goalService.update(goal);
     }
 
     @DeleteMapping(value = "/goal/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public void delete(@PathVariable final int id) {
         goalService.delete(id);
     }

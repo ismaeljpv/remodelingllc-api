@@ -52,19 +52,19 @@ public class ServicesResource {
     }
 
     @PostMapping(value = "/services", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public Services save(@Validated @ModelAttribute final ServiceModelDTO service) {
         return servicesService.save(this.convertModelToService(service));
     }
 
     @PutMapping(value = "/services", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public Services update(@Validated @ModelAttribute final ServiceModelDTO service) {
         return servicesService.update(this.convertModelToService(service));
     }
 
     @DeleteMapping(value = "/services/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public void delete(@PathVariable final int id) {
         servicesService.delete(id);
     }

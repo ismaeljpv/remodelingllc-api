@@ -22,13 +22,13 @@ public class CompanyResource {
     }
 
     @PostMapping(value = "/company", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public Company save(@Validated @RequestBody final Company company) {
         return companyService.save(company);
     }
 
     @PutMapping(value = "/company", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public Company update (@Validated @RequestBody final Company company) {
         return companyService.update(company);
     }

@@ -9,6 +9,7 @@ import com.remodelingllc.api.util.ContentTypeHelper;
 import com.remodelingllc.api.util.ResponseEntityHelper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -29,14 +30,11 @@ public class PostResource {
         this.postService = postService;
     }
 
-    @GetMapping(value = "/post", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Post> findAll() {
-        return postService.findAll();
-    }
-
-    @GetMapping(value = "/post", params = {"page", "size"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Page<Post> findAllActive(@RequestParam("page") final int page, @RequestParam("size") final int size) {
-        return postService.findAllActive(page, size);
+    @GetMapping(value = "/post", params = {"page", "size", "sort"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Page<Post> findAllActive(@RequestParam("page") final int page,
+                                    @RequestParam("size") final int size,
+                                    @RequestParam("sort") final String sort) {
+        return postService.findAllActive(page, size, Sort.by(Sort.Direction.fromString(sort), "id"));
     }
 
     @GetMapping(value = "/post/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,19 +50,19 @@ public class PostResource {
     }
 
     @PostMapping(value = "/post", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public Post save(@Validated @ModelAttribute final PostModelDTO post) {
         return postService.save(this.convertModelToPost(post));
     }
 
     @PutMapping(value = "/post", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public Post update(@Validated @ModelAttribute final PostModelDTO post) {
         return postService.update(this.convertModelToPost(post));
     }
 
     @DeleteMapping(value = "/post/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public void delete(@PathVariable final int id) {
         postService.delete(id);
     }

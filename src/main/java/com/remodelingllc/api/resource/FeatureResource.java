@@ -53,18 +53,18 @@ public class FeatureResource {
     }
 
     @PostMapping(value = "/feature", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public Feature save(@Validated @ModelAttribute  final FeatureModelDTO model) {
         return featureService.save(this.convertModelToFeature(model));
     }
     @PutMapping(value = "/feature", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public Feature update(@Validated @ModelAttribute  final FeatureModelDTO model) {
         return featureService.update(this.convertModelToFeature(model));
     }
 
     @DeleteMapping(value = "/feature/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public void delete(@PathVariable final int id) {
         featureService.delete(id);
     }

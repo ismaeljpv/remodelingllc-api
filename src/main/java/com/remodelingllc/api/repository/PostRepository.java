@@ -16,8 +16,6 @@ public interface PostRepository extends PagingAndSortingRepository<Post, Integer
 
     Page<Post> findAllByStatus(final Status status, final Pageable pageable);
 
-    List<Post> findAllByStatus(final Status status, final Sort sort);
-
     ThumbnailData findThumbnailById(final int id);
 
 }

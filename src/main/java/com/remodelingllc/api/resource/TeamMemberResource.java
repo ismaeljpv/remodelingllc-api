@@ -46,19 +46,19 @@ public class TeamMemberResource {
     }
 
     @PostMapping(value = "/team", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public TeamMember save(@Validated @ModelAttribute  final TeamMemberModelDTO model) {
         return teamMemberService.save(this.convertModelToTeamMember(model));
     }
 
     @PutMapping(value = "/team", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public TeamMember update(@Validated @ModelAttribute  final TeamMemberModelDTO model) {
         return teamMemberService.update(this.convertModelToTeamMember(model));
     }
 
     @DeleteMapping(value = "/team/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MAINTAINER')")
     public void delete(@PathVariable final int id) {
         teamMemberService.delete(id);
     }

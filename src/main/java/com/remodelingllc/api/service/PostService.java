@@ -23,12 +23,8 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public List<Post> findAll() {
-        return postRepository.findAllByStatus(Status.ACTIVE, Sort.by(Sort.Direction.ASC, "id"));
-    }
-
-    public Page<Post> findAllActive(final int page, final int size) {
-        return postRepository.findAllByStatus(Status.ACTIVE, PageRequest.of(page, size));
+    public Page<Post> findAllActive(final int page, final int size, final Sort sort) {
+        return postRepository.findAllByStatus(Status.ACTIVE, PageRequest.of(page, size, sort));
     }
 
     public Post findById(final int id) {
