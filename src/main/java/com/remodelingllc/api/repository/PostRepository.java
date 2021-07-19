@@ -14,6 +14,8 @@ import java.util.List;
 @Repository
 public interface PostRepository extends PagingAndSortingRepository<Post, Integer> {
 
+    List<Post> findAllByStatus(final Status status);
+
     Page<Post> findAllByStatus(final Status status, final Pageable pageable);
 
     ThumbnailData findThumbnailById(final int id);

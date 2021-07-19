@@ -62,6 +62,12 @@ Content-Type: application/json
 GET http://localhost:8085/team
 Content-Type: application/json
 
+### Get DB tables sizes
+GET http://localhost:8085/tables/info
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNjY4MTAyNywibGFzdG5hbWUiOiJQZW5hIiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6IkEifQ.EO_VTzat2xG1pV2YWjIMWJhVygsPynO_jYvmhmHgaRQ12OttIwvJO8MrWP-zcTC6aNkH7j8j7ar7eeuw2v2EPg
+Content-Type: application/json
+
+
 ### Get Active Post
 GET http://localhost:8085/post?page=0&size=5&sort=DESC
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNjY4MTAyNywibGFzdG5hbWUiOiJQZW5hIiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6IkEifQ.EO_VTzat2xG1pV2YWjIMWJhVygsPynO_jYvmhmHgaRQ12OttIwvJO8MrWP-zcTC6aNkH7j8j7ar7eeuw2v2EPg

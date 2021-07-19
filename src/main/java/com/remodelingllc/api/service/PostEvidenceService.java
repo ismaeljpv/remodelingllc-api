@@ -1,16 +1,20 @@
 package com.remodelingllc.api.service;
 
+import com.remodelingllc.api.entity.Post;
 import com.remodelingllc.api.entity.PostEvidence;
 import com.remodelingllc.api.entity.enums.MediaType;
 import com.remodelingllc.api.exception.BadRequestException;
 import com.remodelingllc.api.interfaces.PictureData;
 import com.remodelingllc.api.repository.PostEvidenceRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
+@Log4j2
 @Service
 public class PostEvidenceService {
 
@@ -48,6 +52,27 @@ public class PostEvidenceService {
         // Validate post existence
         postService.findById(postEvidence.getPostId());
         return postEvidenceRepository.save(postEvidence);
+    }
+
+    public void deleteInactivatedPostsWithEvidence() {
+        List<Post> inactivePosts = postService.findAllInactive();
+        if (!inactivePosts.isEmpty()) {
+            log.info("{} inactive posts ready to be deleted", inactivePosts.size());
+            int totalEvidenceDeleted = 0;
+            for (Post post: inactivePosts) {
+                Page<PostEvidence> allEvidence = this.findAllByPostId(post.getId(), 0, Integer.MAX_VALUE);
+                for (PostEvidence evidence: allEvidence.getContent()) {
+                    postEvidenceRepository.delete(evidence);
+                }
+                log.info("{} evidence deleted for post {}", allEvidence.getTotalElements(), post.getId());
+                totalEvidenceDeleted += allEvidence.getTotalElements();
+            }
+            postService.deleteAll(inactivePosts);
+            log.info("{} total evidence deleted successfully", totalEvidenceDeleted);
+            log.info("{} inactive posts deleted successfully", inactivePosts.size());
+        } else {
+            log.info("No inactive posts found, process skipped");
+        }
     }
 
     public void delete(final int id) {

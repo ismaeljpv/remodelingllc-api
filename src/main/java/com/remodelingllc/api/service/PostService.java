@@ -1,7 +1,7 @@
 package com.remodelingllc.api.service;
 
-import com.remodelingllc.api.entity.enums.Status;
 import com.remodelingllc.api.entity.Post;
+import com.remodelingllc.api.entity.enums.Status;
 import com.remodelingllc.api.exception.BadRequestException;
 import com.remodelingllc.api.interfaces.ThumbnailData;
 import com.remodelingllc.api.repository.PostRepository;
@@ -61,4 +61,11 @@ public class PostService {
         postRepository.save(post.get());
     }
 
+    public List<Post> findAllInactive() {
+       return postRepository.findAllByStatus(Status.INACTIVE);
+    }
+
+    public void deleteAll(List<Post> posts) {
+        postRepository.deleteAll(posts);
+    }
 }
