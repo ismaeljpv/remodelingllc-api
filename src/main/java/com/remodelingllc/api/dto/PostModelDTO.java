@@ -3,9 +3,9 @@ package com.remodelingllc.api.dto;
 import com.remodelingllc.api.entity.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +27,7 @@ public class PostModelDTO {
     private String client;
     @NotNull(message = "Project Date cant be null")
     private Date projectDate;
-    @NotNull(message = "User cant be null")
+    @Min(value = 1, message = "User must be Registered")
     private int userId;
     @NotNull(message = "Thumbnail cant be null")
     private MultipartFile thumbnail;

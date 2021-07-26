@@ -1,6 +1,5 @@
 package com.remodelingllc.api.resource;
 
-import com.remodelingllc.api.entity.Feature;
 import com.remodelingllc.api.entity.Goal;
 import com.remodelingllc.api.service.GoalService;
 import org.springframework.data.domain.Page;

@@ -1,5 +1,6 @@
 package com.remodelingllc.api.util;
 
+import com.remodelingllc.api.exception.BadRequestException;
 import org.springframework.http.MediaType;
 
 public class ContentTypeHelper {
@@ -12,7 +13,7 @@ public class ContentTypeHelper {
             case "image/jpg":
                 return MediaType.IMAGE_JPEG;
             default:
-                throw new UnsupportedOperationException("Invalid Content Type");
+                throw new BadRequestException("Invalid Content Type");
         }
     }
 

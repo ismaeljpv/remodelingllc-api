@@ -1,7 +1,7 @@
 package com.remodelingllc.api.service;
 
-import com.remodelingllc.api.entity.enums.Status;
 import com.remodelingllc.api.entity.Services;
+import com.remodelingllc.api.entity.enums.Status;
 import com.remodelingllc.api.exception.EntityNotFoundException;
 import com.remodelingllc.api.interfaces.ThumbnailData;
 import com.remodelingllc.api.repository.ServicesRepository;

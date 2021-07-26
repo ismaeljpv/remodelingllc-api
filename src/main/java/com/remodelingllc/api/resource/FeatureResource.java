@@ -4,7 +4,6 @@ import com.remodelingllc.api.dto.FeatureModelDTO;
 import com.remodelingllc.api.entity.Feature;
 import com.remodelingllc.api.exception.BadRequestException;
 import com.remodelingllc.api.interfaces.ImageData;
-import com.remodelingllc.api.interfaces.PictureData;
 import com.remodelingllc.api.service.FeatureService;
 import com.remodelingllc.api.util.ContentTypeHelper;
 import com.remodelingllc.api.util.ResponseEntityHelper;
