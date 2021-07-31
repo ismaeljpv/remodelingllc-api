@@ -1,7 +1,7 @@
 package com.remodelingllc.api.service;
 
 import com.remodelingllc.api.entity.Feature;
-import com.remodelingllc.api.exception.BadRequestException;
+import com.remodelingllc.api.exception.EntityNotFoundException;
 import com.remodelingllc.api.interfaces.ImageData;
 import com.remodelingllc.api.repository.FeatureRepository;
 import org.springframework.data.domain.Page;
@@ -30,7 +30,7 @@ public class FeatureService {
     public Feature findById(final int id) {
         var feature = featureRepository.findById(id);
         if (feature.isEmpty()) {
-            throw new BadRequestException("Feature Not Found");
+            throw new EntityNotFoundException("Feature Not Found");
         }
         return feature.get();
     }
@@ -38,7 +38,7 @@ public class FeatureService {
     public ImageData findImageById(final int id) {
         var feature = featureRepository.findById(id);
         if (feature.isEmpty()) {
-            throw new BadRequestException("Feature Not Found");
+            throw new EntityNotFoundException("Feature Not Found");
         }
         return featureRepository.findImageById(id);
     }
@@ -50,7 +50,7 @@ public class FeatureService {
     public Feature update(final Feature feature) {
         var oldFeature = featureRepository.findById(feature.getId());
         if (oldFeature.isEmpty()) {
-            throw new BadRequestException("Feature Not Found");
+            throw new EntityNotFoundException("Feature Not Found");
         }
         return featureRepository.save(feature);
     }
@@ -58,7 +58,7 @@ public class FeatureService {
     public void delete(final int id) {
         var oldFeature = featureRepository.findById(id);
         if (oldFeature.isEmpty()) {
-            throw new BadRequestException("Feature Not Found");
+            throw new EntityNotFoundException("Feature Not Found");
         }
         featureRepository.delete(oldFeature.get());
     }

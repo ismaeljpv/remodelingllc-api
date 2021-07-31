@@ -24,7 +24,6 @@ public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
     @NotNull(message = "Username cant be null")
     private String username;

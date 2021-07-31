@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -24,12 +24,13 @@ import java.util.Objects;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-@Profile("test")
 public class PostResourceTest {
 
     @Autowired
@@ -39,7 +40,7 @@ public class PostResourceTest {
     private HttpHeaders globalHeaders;
 
     private PostModelDTO post;
-    MockMultipartFile file;
+    private MockMultipartFile file;
 
     @BeforeEach
     void setup () {
@@ -82,7 +83,7 @@ public class PostResourceTest {
     @Test
     @DisplayName("Create Post - Success")
     public void createPost_success() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/post")
+        mockMvc.perform(post("/post")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .headers(globalHeaders)
                 .flashAttr("postModelDTO", post))
@@ -95,7 +96,7 @@ public class PostResourceTest {
     @DisplayName("Create Post - User Null")
     public void createPost_userNull() throws Exception {
         post.setUserId(0);
-        mockMvc.perform(MockMvcRequestBuilders.post("/post")
+        mockMvc.perform(post("/post")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .accept(MediaType.APPLICATION_JSON)
                 .headers(globalHeaders)
@@ -107,7 +108,7 @@ public class PostResourceTest {
     @DisplayName("Create Post - User Not Found")
     public void createPost_userNotFound() throws Exception {
         post.setUserId(99);
-        mockMvc.perform(MockMvcRequestBuilders.post("/post")
+        mockMvc.perform(post("/post")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .accept(MediaType.APPLICATION_JSON)
                 .headers(globalHeaders)
@@ -124,7 +125,7 @@ public class PostResourceTest {
         file = new MockMultipartFile("thumbnail", "file.pdf",
                 MediaType.APPLICATION_PDF_VALUE, new byte[10]);
         post.setThumbnail(file);
-        mockMvc.perform(MockMvcRequestBuilders.post("/post")
+        mockMvc.perform(post("/post")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .accept(MediaType.APPLICATION_JSON)
                 .headers(globalHeaders)

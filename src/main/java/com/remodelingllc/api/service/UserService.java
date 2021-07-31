@@ -75,7 +75,7 @@ public class UserService implements UserDetailsService  {
     public User save(final User user) {
         Optional<User> oldUser = userRepository.findByUsername(user.getUsername());
         if (oldUser.isPresent()) {
-            throw new BadRequestException("Username is already taken");
+            throw new BadRequestException("Username Is Already Taken");
         }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
@@ -88,7 +88,7 @@ public class UserService implements UserDetailsService  {
         }
         oldUser = userRepository.findByUsername(user.getUsername());
         if (oldUser.isPresent() && user.getId() != oldUser.get().getId()) {
-            throw new BadRequestException("Username is already taken");
+            throw new BadRequestException("Username Is Already Taken");
         }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);

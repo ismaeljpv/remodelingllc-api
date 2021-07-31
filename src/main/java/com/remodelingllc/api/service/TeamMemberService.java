@@ -1,7 +1,7 @@
 package com.remodelingllc.api.service;
 
 import com.remodelingllc.api.entity.TeamMember;
-import com.remodelingllc.api.exception.BadRequestException;
+import com.remodelingllc.api.exception.EntityNotFoundException;
 import com.remodelingllc.api.interfaces.PhotoData;
 import com.remodelingllc.api.repository.TeamMemberRepository;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class TeamMemberService {
     public TeamMember findById(final int id) {
         var oldMember = teamMemberRepository.findById(id);
         if (oldMember.isEmpty()) {
-            throw new BadRequestException("Team Member Not Found");
+            throw new EntityNotFoundException("Team Member Not Found");
         }
         return oldMember.get();
     }
@@ -32,7 +32,7 @@ public class TeamMemberService {
     public PhotoData findPhotoById(final int id) {
         var oldMember = teamMemberRepository.findById(id);
         if (oldMember.isEmpty()) {
-            throw new BadRequestException("Team Member Not Found");
+            throw new EntityNotFoundException("Team Member Not Found");
         }
         return teamMemberRepository.findPhotoById(id);
     }
@@ -44,7 +44,7 @@ public class TeamMemberService {
     public TeamMember update(final TeamMember member) {
         var oldMember = teamMemberRepository.findById(member.getId());
         if (oldMember.isEmpty()) {
-            throw new BadRequestException("Team Member Not Found");
+            throw new EntityNotFoundException("Team Member Not Found");
         }
         return teamMemberRepository.save(member);
     }
@@ -52,7 +52,7 @@ public class TeamMemberService {
     public void delete(final int id) {
         var oldMember = teamMemberRepository.findById(id);
         if (oldMember.isEmpty()) {
-            throw new BadRequestException("Team Member Not Found");
+            throw new EntityNotFoundException("Team Member Not Found");
         }
         teamMemberRepository.delete(oldMember.get());
     }

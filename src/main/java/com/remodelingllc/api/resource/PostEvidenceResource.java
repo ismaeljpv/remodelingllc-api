@@ -92,7 +92,7 @@ public class PostEvidenceResource {
                 evidence.setPictureExtension(contentType);
             } else if (model.getVideoUrl() != null) {
                 evidence.setVideoUrl(model.getVideoUrl());
-                String videoId = "";
+                String videoId;
                 if (evidence.getVideoUrl().contains("&")) {
                     videoId = StringUtils.substringsBetween(evidence.getVideoUrl(), "=", "&")[0];
                 } else {

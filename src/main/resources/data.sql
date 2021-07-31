@@ -4,6 +4,7 @@ INSERT INTO goal (description, company_id) VALUES ('We have a qualified and expe
 INSERT INTO goal (description, company_id) VALUES ('In our business, our clients are our main priority, therefore we will always try to satisfy all their needs to achieve success', 1);
 
 INSERT INTO user (username, password, last_login, status, firstname, lastname, email) VALUES ('admin', '$2a$10$cbN5tfrOvwm2EUDWjYYc0.y.3gopATIJLZf1SoAHTGzjEx77Ft2aq', '2021-07-25 17:03:08', 'A', 'Ismael', 'Pena', 'ismaeljpv14@gmail.com');
+INSERT INTO user (username, password, last_login, status, firstname, lastname, email) VALUES ('admin2', '$2a$10$cbN5tfrOvwm2EUDWjYYc0.y.3gopATIJLZf1SoAHTGzjEx77Ft2aq', '2021-07-25 17:03:08', 'A', 'Ismael', 'Pena', 'ismael@gmail.com');
 
 INSERT INTO role (role, status) VALUES ('ADMIN', 'A');
 INSERT INTO role (role, status) VALUES ('MAINTAINER', 'A');
@@ -16,3 +17,13 @@ INSERT INTO post (title, description, tags, user_id, status, thumbnail_extension
 
 INSERT INTO services (description, service, status, thumbnail_extension) VALUES ('We build your upper and lower decks fitting any requirement.', 'Deck', 'A', 'image/jpeg');
 INSERT INTO services (description, service, status, thumbnail_extension) VALUES ('We design the perfect courtyard for your house. ', 'Courtyards', 'A', 'image/jpeg');
+
+INSERT INTO post_evidence (video_url, type, post_id, video_id) VALUES ('https://www.youtube.com/watch?v=pNHm9LW4uE8', 'V', 1, 'pNHm9LW4uE8');
+INSERT INTO post_evidence (video_url, type, post_id, video_id) VALUES ('https://www.youtube.com/watch?v=sOS9aOIXPEk&list=RDsOS9aOIXPEk&start_radio=1', 'V', 1, 'sOS9aOIXPEk');
+
+
+INSERT INTO feature (title, description, image, image_extension) VALUES ('Quality', 'We adjust to the budget of our clients always maintaining the quality of our construction materials.', null, '');
+INSERT INTO feature (title, description, image, image_extension) VALUES ('Safety', 'In our business, safety is everything, therefore all our employees follow the safety standards required in the different work areas.', null, '');
+
+INSERT INTO team_member (name, position, photo, photo_extension) VALUES ('Angel Romero', 'CEO - President', null, 'image/jpeg');
+INSERT INTO team_member (name, position, photo, photo_extension) VALUES ('Jose Romero', 'CTO', null, 'image/jpeg');
