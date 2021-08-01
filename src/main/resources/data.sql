@@ -3,8 +3,8 @@ INSERT INTO goal (description, company_id) VALUES ('Our goal is to achieve excel
 INSERT INTO goal (description, company_id) VALUES ('We have a qualified and experienced team that is here to serve any remodeling requirement', 1);
 INSERT INTO goal (description, company_id) VALUES ('In our business, our clients are our main priority, therefore we will always try to satisfy all their needs to achieve success', 1);
 
-INSERT INTO user (username, password, last_login, status, firstname, lastname, email) VALUES ('admin', '$2a$10$cbN5tfrOvwm2EUDWjYYc0.y.3gopATIJLZf1SoAHTGzjEx77Ft2aq', '2021-07-25 17:03:08', 'A', 'Ismael', 'Pena', 'ismaeljpv14@gmail.com');
-INSERT INTO user (username, password, last_login, status, firstname, lastname, email) VALUES ('admin2', '$2a$10$cbN5tfrOvwm2EUDWjYYc0.y.3gopATIJLZf1SoAHTGzjEx77Ft2aq', '2021-07-25 17:03:08', 'A', 'Ismael', 'Pena', 'ismael@gmail.com');
+INSERT INTO users (username, password, last_login, status, firstname, lastname, email) VALUES ('admin', '$2a$10$cbN5tfrOvwm2EUDWjYYc0.y.3gopATIJLZf1SoAHTGzjEx77Ft2aq', '2021-07-25 17:03:08', 'A', 'Ismael', 'Pena', 'ismaeljpv14@gmail.com');
+INSERT INTO users (username, password, last_login, status, firstname, lastname, email) VALUES ('admin2', '$2a$10$cbN5tfrOvwm2EUDWjYYc0.y.3gopATIJLZf1SoAHTGzjEx77Ft2aq', '2021-07-25 17:03:08', 'A', 'Ismael', 'Pena', 'ismael@gmail.com');
 
 INSERT INTO role (role, status) VALUES ('ADMIN', 'A');
 INSERT INTO role (role, status) VALUES ('MAINTAINER', 'A');

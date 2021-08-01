@@ -10,46 +10,48 @@ Content-Type: application/json
 ### Get Roles
 GET http://localhost:8085/role
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNDE4Mzk5NywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.5UZ_o5Fpc8Fg7zcnJGFZ1QlsPf0g3OORQRbhzaOdTK7DbzPaSSvnkc4lOt1SREyWb4QPUoR0w3EofA62IghHZA
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImxhc3RuYW1lIjoiUGVuYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.8X5E0yElN4Nvf72EdCEa3_cAZkDKisbd__9XJ-5xq_szPva0vIeoCFDEpnsOZ19vN8tqrvgYj4KnjbUZhHZBSA
 
 ### Get Roles By ID
 GET http://localhost:8085/role/1
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNDE4Mzk5NywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.5UZ_o5Fpc8Fg7zcnJGFZ1QlsPf0g3OORQRbhzaOdTK7DbzPaSSvnkc4lOt1SREyWb4QPUoR0w3EofA62IghHZA
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImxhc3RuYW1lIjoiUGVuYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.8X5E0yElN4Nvf72EdCEa3_cAZkDKisbd__9XJ-5xq_szPva0vIeoCFDEpnsOZ19vN8tqrvgYj4KnjbUZhHZBSA
 
 ### Get Users By ID
-GET http://localhost:8085/user/1
+GET http://localhost:8085/user/3
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNDE4Mzk5NywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.5UZ_o5Fpc8Fg7zcnJGFZ1QlsPf0g3OORQRbhzaOdTK7DbzPaSSvnkc4lOt1SREyWb4QPUoR0w3EofA62IghHZA
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImxhc3RuYW1lIjoiUGVuYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.8X5E0yElN4Nvf72EdCEa3_cAZkDKisbd__9XJ-5xq_szPva0vIeoCFDEpnsOZ19vN8tqrvgYj4KnjbUZhHZBSA
 
 ### Get Users
 GET http://localhost:8085/user
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNTE5NjIwNywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.Bm1YP6SlOyPRKxWwPD2hGSInibzhi5cgB2VSKOB2QORwB7hXC74SfjVkh6Np0xFslxjgq5REnwA0HFwd-lnrCw
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImxhc3RuYW1lIjoiUGVuYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.8X5E0yElN4Nvf72EdCEa3_cAZkDKisbd__9XJ-5xq_szPva0vIeoCFDEpnsOZ19vN8tqrvgYj4KnjbUZhHZBSA
 
 ### Get Users
 GET http://localhost:8085/user?page=0&size=5
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNTU0OTgxOCwibGFzdG5hbWUiOiJQZW5hdmlsIiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6IkEifQ.AdYvYY-x2zkKLrvdABcDzCAdi33ZhywD15DG-7nuWgfp1KiMh15ihb2FmowI3BSrGGuO2lxiA4yIO5qylFpHtw
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImxhc3RuYW1lIjoiUGVuYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.8X5E0yElN4Nvf72EdCEa3_cAZkDKisbd__9XJ-5xq_szPva0vIeoCFDEpnsOZ19vN8tqrvgYj4KnjbUZhHZBSA
 
 ### Delete User
-DELETE http://localhost:8085/user/1
+DELETE http://localhost:8085/user/4
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNTE5NjIwNywibGFzdG5hbWUiOiJQZcOxYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.Bm1YP6SlOyPRKxWwPD2hGSInibzhi5cgB2VSKOB2QORwB7hXC74SfjVkh6Np0xFslxjgq5REnwA0HFwd-lnrCw
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImxhc3RuYW1lIjoiUGVuYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.8X5E0yElN4Nvf72EdCEa3_cAZkDKisbd__9XJ-5xq_szPva0vIeoCFDEpnsOZ19vN8tqrvgYj4KnjbUZhHZBSA
 
 ### Create User
 POST http://localhost:8085/user
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImxhc3RuYW1lIjoiUGVuYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.8X5E0yElN4Nvf72EdCEa3_cAZkDKisbd__9XJ-5xq_szPva0vIeoCFDEpnsOZ19vN8tqrvgYj4KnjbUZhHZBSA
 Content-Type: application/json
 
 {
-  "username": "admin2",
-  "password": "admin123.",
+  "username": "maintainer",
+  "password": "admin1234.",
+  "email": "newemail@gmail.com",
   "firstname": "Jesus",
   "lastname": "Viloria",
   "status": "INACTIVE",
   "roles": [{
-    "id": 1,
-    "role": "ADMIN",
+    "id": 2,
+    "role": "MAINTAINER",
     "status": "ACTIVE"
   }]
 }
@@ -64,13 +66,12 @@ Content-Type: application/json
 
 ### Get DB tables sizes
 GET http://localhost:8085/tables/info
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNjY4MTAyNywibGFzdG5hbWUiOiJQZW5hIiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6IkEifQ.EO_VTzat2xG1pV2YWjIMWJhVygsPynO_jYvmhmHgaRQ12OttIwvJO8MrWP-zcTC6aNkH7j8j7ar7eeuw2v2EPg
 Content-Type: application/json
-
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImxhc3RuYW1lIjoiUGVuYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.8X5E0yElN4Nvf72EdCEa3_cAZkDKisbd__9XJ-5xq_szPva0vIeoCFDEpnsOZ19vN8tqrvgYj4KnjbUZhHZBSA
 
 ### Get Active Post
 GET http://localhost:8085/post?page=0&size=5&sort=DESC
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImV4cCI6MTYyNjY4MTAyNywibGFzdG5hbWUiOiJQZW5hIiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6IkEifQ.EO_VTzat2xG1pV2YWjIMWJhVygsPynO_jYvmhmHgaRQ12OttIwvJO8MrWP-zcTC6aNkH7j8j7ar7eeuw2v2EPg
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IkFETUlOIiwiZmlyc3RuYW1lIjoiSXNtYWVsIiwiaWQiOjEsImxhc3RuYW1lIjoiUGVuYSIsInVzZXJuYW1lIjoiYWRtaW4iLCJzdGF0dXMiOiJBIn0.8X5E0yElN4Nvf72EdCEa3_cAZkDKisbd__9XJ-5xq_szPva0vIeoCFDEpnsOZ19vN8tqrvgYj4KnjbUZhHZBSA
 Content-Type: application/json
 
 ### Get Post By ID
@@ -100,15 +101,6 @@ Content-Type: application/json
 ### Get active services paginated
 GET http://localhost:8085/services?page=0&size=3
 Content-Type: application/json
-
-### Login
-POST http://localhost:8085/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin12345."
-}
 
 ### Contact Email
 POST http://localhost:8085/contact/email
