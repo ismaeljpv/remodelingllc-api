@@ -59,6 +59,7 @@ public class ServicesService {
             throw new EntityNotFoundException("Service Not Found");
         }
         service.get().setStatus(Status.INACTIVE);
+        service.get().setThumbnail(null);
         servicesRepository.save(service.get());
     }
 }

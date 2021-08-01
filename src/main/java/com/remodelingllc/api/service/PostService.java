@@ -63,6 +63,7 @@ public class PostService {
             throw new EntityNotFoundException("Post Not Found");
         }
         post.get().setStatus(Status.INACTIVE);
+        post.get().setThumbnail(null);
         postRepository.save(post.get());
     }
 
