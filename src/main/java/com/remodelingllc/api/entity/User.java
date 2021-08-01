@@ -20,6 +20,7 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id

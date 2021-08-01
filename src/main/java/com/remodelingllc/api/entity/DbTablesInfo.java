@@ -16,8 +16,8 @@ import javax.persistence.Id;
 public class DbTablesInfo {
 
     @Id
-    private long id;
+    private int id;
     private String tableName;
-    private int totalSize;
+    private float totalSize;
 
 }

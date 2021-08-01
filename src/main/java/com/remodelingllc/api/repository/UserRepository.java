@@ -23,7 +23,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     Optional<User> findByUsername(final String username);
 
     @Modifying
-    @Query(value = "UPDATE user u SET u.last_login = CURRENT_TIMESTAMP()  WHERE u.id = ?1 ", nativeQuery = true)
+    @Query(value = "UPDATE users SET last_login = CURRENT_TIMESTAMP  WHERE id = ?1 ", nativeQuery = true)
     void updateLastLogin(final int id);
 
 }
