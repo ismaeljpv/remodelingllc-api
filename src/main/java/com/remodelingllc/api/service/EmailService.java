@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class EmailService {
 
     @Value("${com.remodellingllc.corporated.email}")
-    private String coporatedEmail;
+    private String corporatedEmail;
 
     private final String EMAIL_ENCODING = "utf-8";
 
@@ -31,7 +31,7 @@ public class EmailService {
             MimeMessagePreparator messagePreparator = mimeMessage -> {
                 MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, EMAIL_ENCODING);
                 messageHelper.setFrom(email.getFrom());
-                messageHelper.setTo(coporatedEmail);
+                messageHelper.setTo(corporatedEmail);
                 messageHelper.setSubject(email.getSubject());
                 String body = emailContentService.buildContactEmail(email);
                 messageHelper.setText(body, true);
@@ -49,7 +49,7 @@ public class EmailService {
         try {
             MimeMessagePreparator messagePreparator = mimeMessage -> {
                 MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, EMAIL_ENCODING);
-                messageHelper.setFrom(coporatedEmail);
+                messageHelper.setFrom(corporatedEmail);
                 messageHelper.setTo(email.getTo());
                 messageHelper.setSubject(email.getSubject());
                 String body = emailContentService.buildPasswordRecoveryEmail(email);

@@ -108,6 +108,7 @@ Content-Type: application/json
 
 {
   "subject": "My First Contact Email",
+  "name": "Ismael Peña",
   "from": "ismaeljpv14@gmail.com",
   "message": "I wanna know the pricing for an in house remodeling",
   "phoneNumber": "+1221341221"
