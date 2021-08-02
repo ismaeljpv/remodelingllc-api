@@ -58,8 +58,6 @@ public class ServicesService {
         if (service.isEmpty()) {
             throw new EntityNotFoundException("Service Not Found");
         }
-        service.get().setStatus(Status.INACTIVE);
-        service.get().setThumbnail(null);
-        servicesRepository.save(service.get());
+        servicesRepository.delete(service.get());
     }
 }
