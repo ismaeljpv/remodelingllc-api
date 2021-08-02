@@ -83,7 +83,7 @@ GET https://remodelingllc-api.herokuapp.com/services
 Content-Type: application/json
 
 ### Get Service By ID
-GET http://localhost:8085/services/2
+GET https://remodelingllc-api.herokuapp.com/services/2
 Content-Type: application/json
 
 ### Get Service Thumbnail By ID
