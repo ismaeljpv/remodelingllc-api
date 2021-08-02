@@ -79,7 +79,7 @@ GET http://localhost:8085/post/13
 Content-Type: application/json
 
 ### Get Services
-GET http://localhost:8085/services
+GET https://remodelingllc-api.herokuapp.com/services
 Content-Type: application/json
 
 ### Get Service By ID
