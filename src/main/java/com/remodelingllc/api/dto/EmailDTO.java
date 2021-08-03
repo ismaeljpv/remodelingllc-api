@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
 
 @NoArgsConstructor
@@ -25,7 +26,6 @@ public class EmailDTO {
     private String from;
     @NotNull(message = "Message cant be null")
     private String message;
-    @Pattern(regexp = "^\\+[1-9]{1}[0-9]{3,14}$", message = "Phone Number Not Valid")
     private String phoneNumber;
 
 }
