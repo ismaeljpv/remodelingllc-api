@@ -1,6 +1,5 @@
 package com.remodelingllc.api.repository;
 
-import com.remodelingllc.api.entity.Feature;
 import com.remodelingllc.api.entity.Goal;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

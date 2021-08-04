@@ -7,6 +7,7 @@ import com.remodelingllc.api.interfaces.ThumbnailData;
 import com.remodelingllc.api.repository.ServicesRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class ServicesService {
     }
 
     public Page<Services> findAllActive(final int page, final int size) {
-        return servicesRepository.findAllByStatus(Status.ACTIVE, PageRequest.of(page, size));
+        return servicesRepository.findAllByStatus(Status.ACTIVE,
+                PageRequest.of(page, size, Sort.by(Sort.Order.asc("id"))));
     }
 
     public Services findById(final int id) {

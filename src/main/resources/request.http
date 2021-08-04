@@ -128,4 +128,12 @@ Content-Type: application/json
   "password": "admin1234."
 }
 
+### Get All Features
+GET http://localhost:8085/feature
+Content-Type: application/json
+
+### Get All Features paginated
+GET http://localhost:8085/feature?page=0&size=5
+Content-Type: application/json
+
 

@@ -5,6 +5,7 @@ import com.remodelingllc.api.exception.BadRequestException;
 import com.remodelingllc.api.repository.GoalRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class GoalService {
     }
 
     public Page<Goal> findAllPaginated(final int page, final int size) {
-        return goalRepository.findAll(PageRequest.of(page, size));
+        return goalRepository.findAll(PageRequest.of(page, size, Sort.by(Sort.Order.asc("id"))));
     }
 
     public Goal findById(final int id) {

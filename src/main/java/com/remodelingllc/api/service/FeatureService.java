@@ -6,6 +6,7 @@ import com.remodelingllc.api.interfaces.ImageData;
 import com.remodelingllc.api.repository.FeatureRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +21,11 @@ public class FeatureService {
     }
 
     public List<Feature> findAll(){
-        return (List<Feature>) featureRepository.findAll();
+        return (List<Feature>) featureRepository.findAll(Sort.by(Sort.Order.asc("id")));
     }
 
     public Page<Feature> findAllPaginated(final int page, final int size) {
-        return featureRepository.findAll(PageRequest.of(page, size));
+        return featureRepository.findAll(PageRequest.of(page, size, Sort.by(Sort.Order.asc("id"))));
     }
 
     public Feature findById(final int id) {
