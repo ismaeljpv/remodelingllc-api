@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailService {
 
-    @Value("${com.remodellingllc.corporated.email}")
+    @Value("${com.remodelingllc.corporated.email}")
     private String corporatedEmail;
 
     private final String EMAIL_ENCODING = "utf-8";
