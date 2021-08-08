@@ -22,7 +22,7 @@ public class SchedulerComponent {
     @Value("${com.remodelingllc.api.uri}")
     private String apiUri;
 
-    @Scheduled(cron = "0 */25 * * * *")
+    @Scheduled(cron = "0 */50 * * * *")
     public void refreshHomePage() {
         var restTemplate = new RestTemplate();
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(homePageUri);
@@ -35,7 +35,7 @@ public class SchedulerComponent {
         }
     }
 
-    @Scheduled(cron = "0 */25 * * * *")
+    @Scheduled(cron = "0 */50 * * * *")
     public void refreshApi() {
         var restTemplate = new RestTemplate();
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(apiUri + "/feature");

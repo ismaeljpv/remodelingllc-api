@@ -1,6 +1,6 @@
 package com.remodelingllc.api.resource;
 
-import com.remodelingllc.api.dto.TeamMemberModelDTO;
+import com.remodelingllc.api.dto.TrustReasonModelDTO;
 import com.remodelingllc.api.exception.BadRequestException;
 import com.remodelingllc.api.exception.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TeamMemberResourceTest {
+public class TrustReasonResourceTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -35,128 +35,130 @@ public class TeamMemberResourceTest {
     @Autowired
     private HttpHeaders globalHeaders;
 
-    private TeamMemberModelDTO member;
+    private TrustReasonModelDTO reason;
     private MockMultipartFile file;
 
     @BeforeEach
     void setup() {
-        member = new TeamMemberModelDTO();
-        member.setName("New Member");
-        member.setPosition("CEO");
-        file = new MockMultipartFile("photo", "image.png",
+        reason = new TrustReasonModelDTO();
+        reason.setTitle("New Trust Reason");
+        reason.setDescription("New Trust Reason Description");
+        file = new MockMultipartFile("image", "image.png",
                 MediaType.IMAGE_PNG_VALUE, new byte[10]);
-        member.setPhoto(file);
+        reason.setImage(file);
     }
 
     @Test
-    @DisplayName("Find team member by ID - Success")
-    public void findTeamMemberById_success() throws Exception {
-        member.setId(1);
-        mockMvc.perform(get("/team/" + member.getId())
-                .contentType(MediaType.MULTIPART_FORM_DATA)
+    @DisplayName("Find trust reason by ID - Success")
+    public void findTrustReasonById_success() throws Exception {
+        reason.setId(1);
+        mockMvc.perform(get("/trustReason/" + reason.getId())
+                .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", notNullValue()) )
-                .andExpect(jsonPath("$.id", is(member.getId())) );
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.id", is(reason.getId())) );
     }
 
     @Test
-    @DisplayName("Find team member by ID - Not found")
-    public void findTeamMemberById_notFound() throws Exception {
-        mockMvc.perform(get("/team/" + 100)
-                .contentType(MediaType.MULTIPART_FORM_DATA)
+    @DisplayName("Find trust reason by ID - Not found")
+    public void findTrustReasonById_notFound() throws Exception {
+        reason.setId(100);
+        mockMvc.perform(get("/trustReason/" + reason.getId())
+                .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof EntityNotFoundException) )
                 .andExpect(result -> assertEquals(Objects.requireNonNull(result.getResolvedException()).getMessage(),
-                        "Team Member Not Found") );
+                        "Trust Reason Not Found") );
     }
 
     @Test
-    @DisplayName("Create team member - Success")
-    public void createTeamMember_success() throws Exception {
-        mockMvc.perform(post("/team")
+    @DisplayName("Create trust reason - Success")
+    public void createTrustReason_success() throws Exception {
+        mockMvc.perform(post("/trustReason")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .accept(MediaType.APPLICATION_JSON)
                 .headers(globalHeaders)
-                .flashAttr("teamMemberModelDTO", member))
+                .flashAttr("trustReasonModelDTO", reason))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", notNullValue()))
                 .andExpect(jsonPath("$.id", greaterThan(0)));
     }
 
     @Test
-    @DisplayName("Create team member - Invalid file")
-    public void createTeamMember_invalidFile() throws Exception {
+    @DisplayName("Create trust reason - Invalid file")
+    public void createTrustReason_invalidFile() throws Exception {
         file = new MockMultipartFile("image", "image.pdf",
                 MediaType.APPLICATION_PDF_VALUE, new byte[10]);
-        member.setPhoto(file);
-        mockMvc.perform(post("/team")
+        reason.setImage(file);
+        mockMvc.perform(post("/trustReason")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .accept(MediaType.APPLICATION_JSON)
                 .headers(globalHeaders)
-                .flashAttr("teamMemberModelDTO", member))
+                .flashAttr("trustReasonModelDTO", reason))
                 .andExpect(status().isBadRequest())
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof BadRequestException))
                 .andExpect(result -> assertEquals(Objects.requireNonNull(result.getResolvedException()).getMessage(),
-                        "Invalid Content Type") );
+                        "Invalid Content Type"));
     }
 
     @Test
-    @DisplayName("Update team member - Success")
-    public void updateTeamMember_success() throws Exception {
-        member.setId(1);
-        member.setName("New Team Member");
-        mockMvc.perform(put("/team")
+    @DisplayName("Create trust reason - Success")
+    public void updateTrustReason_success() throws Exception {
+        reason.setId(1);
+        reason.setTitle("Updated Trust Reason");
+        mockMvc.perform(put("/trustReason")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .accept(MediaType.APPLICATION_JSON)
                 .headers(globalHeaders)
-                .flashAttr("teamMemberModelDTO", member))
+                .flashAttr("trustReasonModelDTO", reason))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", notNullValue()))
-                .andExpect(jsonPath("$.id", is(member.getId())) )
-                .andExpect(jsonPath("$.name", is(member.getName())) );
+                .andExpect(jsonPath("$.id", is(reason.getId())) )
+                .andExpect(jsonPath("$.title", is(reason.getTitle())) );
     }
 
     @Test
-    @DisplayName("Update team member - Invalid file")
-    public void updateTeamMember_invalidFile() throws Exception {
+    @DisplayName("Create trust reason - Invalid file")
+    public void updateTrustReason_invalidFile() throws Exception {
         file = new MockMultipartFile("image", "image.pdf",
                 MediaType.APPLICATION_PDF_VALUE, new byte[10]);
-        member.setPhoto(file);
-        mockMvc.perform(put("/team")
+        reason.setImage(file);
+        mockMvc.perform(put("/trustReason")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .accept(MediaType.APPLICATION_JSON)
                 .headers(globalHeaders)
-                .flashAttr("teamMemberModelDTO", member))
+                .flashAttr("trustReasonModelDTO", reason))
                 .andExpect(status().isBadRequest())
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof BadRequestException))
                 .andExpect(result -> assertEquals(Objects.requireNonNull(result.getResolvedException()).getMessage(),
-                        "Invalid Content Type") );
+                        "Invalid Content Type"));
     }
 
     @Test
-    @DisplayName("Delete team member - Success")
-    public void deleteTeamMember_success() throws Exception {
-        member.setId(2);
-        mockMvc.perform(delete("/team/" + member.getId())
-                .contentType(MediaType.MULTIPART_FORM_DATA)
+    @DisplayName("Delete trust reason - Success")
+    public void deleteTrustReason_success() throws Exception {
+        reason.setId(2);
+        mockMvc.perform(delete("/trustReason/" + reason.getId())
+                .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .headers(globalHeaders))
                 .andExpect(status().isOk());
     }
 
     @Test
-    @DisplayName("Delete team member - Not found")
-    public void deleteTeamMember_notFound() throws Exception {
-        mockMvc.perform(delete("/team/" + 100)
-                .contentType(MediaType.MULTIPART_FORM_DATA)
+    @DisplayName("Delete trust reason - Not found")
+    public void deleteTrustReason_notFound() throws Exception {
+        reason.setId(100);
+        mockMvc.perform(delete("/trustReason/" + reason.getId())
+                .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .headers(globalHeaders))
                 .andExpect(status().isNotFound())
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof EntityNotFoundException) )
                 .andExpect(result -> assertEquals(Objects.requireNonNull(result.getResolvedException()).getMessage(),
-                        "Team Member Not Found") );
+                        "Trust Reason Not Found") );
     }
 
 }
