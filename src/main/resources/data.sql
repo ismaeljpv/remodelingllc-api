@@ -27,3 +27,7 @@ INSERT INTO feature (title, description, image, image_extension) VALUES ('Safety
 
 INSERT INTO team_member (name, position, photo, photo_extension) VALUES ('Angel Romero', 'CEO - President', null, 'image/jpeg');
 INSERT INTO team_member (name, position, photo, photo_extension) VALUES ('Jose Romero', 'CTO', null, 'image/jpeg');
+
+INSERT INTO trust_reason (title, description, image, image_extension) VALUES ('Excellency', 'Regardless of the difficulty of the task, our team always seeks excellence, achieving your vision with the best results.', '', 'image/jpeg');
+INSERT INTO trust_reason (title, description, image, image_extension) VALUES ('Commitment', 'We are committed to meeting all promised job requirements in the design and planning phase.','', 'image/jpeg');
+INSERT INTO trust_reason (title, description, image, image_extension) VALUES ('Adaptability', 'We are able to adapt to your budget, always focusing on maintaining the quality our work.', '', 'image/jpeg');
