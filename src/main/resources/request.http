@@ -136,4 +136,12 @@ Content-Type: application/json
 GET http://localhost:8085/feature?page=0&size=5
 Content-Type: application/json
 
+### Get All Team Members
+GET http://localhost:8085/team
+Content-Type: application/json
+
+### Get All Trust Reasons
+GET http://localhost:8085/trustReason
+Content-Type: application/json
+
 

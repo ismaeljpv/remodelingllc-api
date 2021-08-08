@@ -4,6 +4,7 @@ import com.remodelingllc.api.entity.TrustReason;
 import com.remodelingllc.api.exception.EntityNotFoundException;
 import com.remodelingllc.api.interfaces.ImageData;
 import com.remodelingllc.api.repository.TrustReasonRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class TrustReasonService {
     }
 
     public List<TrustReason> findAll() {
-        return (List<TrustReason>) trustReasonRepository.findAll();
+        return trustReasonRepository.findAll(Sort.by(Sort.Order.asc("id")));
     }
 
     public TrustReason findById(final int id) {

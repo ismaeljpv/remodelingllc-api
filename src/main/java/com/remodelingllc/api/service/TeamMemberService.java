@@ -4,6 +4,7 @@ import com.remodelingllc.api.entity.TeamMember;
 import com.remodelingllc.api.exception.EntityNotFoundException;
 import com.remodelingllc.api.interfaces.PhotoData;
 import com.remodelingllc.api.repository.TeamMemberRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class TeamMemberService {
     }
 
     public List<TeamMember> findAll() {
-        return (List<TeamMember>) teamMemberRepository.findAll();
+        return teamMemberRepository.findAll(Sort.by(Sort.Order.asc("id")));
     }
 
     public TeamMember findById(final int id) {
