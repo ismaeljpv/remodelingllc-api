@@ -95,7 +95,7 @@ GET http://localhost:8085/postEvidence?postId=13&page=0&size=3
 Content-Type: application/json
 
 ### Get active posts paginated
-GET http://localhost:8085/post?page=0&size=3
+GET http://localhost:8085/post?page=0&size=3&sort=ASC
 Content-Type: application/json
 
 ### Get active services paginated

@@ -31,6 +31,8 @@ public class PostModelDTO {
     private int userId;
     @NotNull(message = "Thumbnail cant be null")
     private MultipartFile thumbnail;
+    @NotNull(message = "Subcontract cant be null")
+    private boolean subcontract;
     private List<String> tags;
 
     public void setId(final int id) {
@@ -67,6 +69,10 @@ public class PostModelDTO {
 
     public void setThumbnail(final MultipartFile thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public void setSubcontract(final boolean subcontract) {
+        this.subcontract = subcontract;
     }
 
     public void setTags(final List<String> tags) {

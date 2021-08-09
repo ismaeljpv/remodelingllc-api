@@ -51,6 +51,7 @@ public class PostResourceTest {
         post.setTags(new ArrayList<>(Arrays.asList("House", "Construction")));
         post.setProjectDate("2021-05-30");
         post.setStatus(Status.ACTIVE);
+        post.setSubcontract(false);
         post.setUserId(1);
         file = new MockMultipartFile("thumbnail", "image.png",
                 MediaType.IMAGE_PNG_VALUE, new byte[10]);

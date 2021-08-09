@@ -40,6 +40,7 @@ public class Post {
     @NotNull(message = "User cant be null")
     private int userId;
     private Date createdAt;
+    private boolean subcontract;
     @Convert(converter = TagsConverter.class)
     private List<String> tags;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

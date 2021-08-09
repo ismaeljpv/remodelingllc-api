@@ -77,6 +77,7 @@ public class PostResource {
            post.setTags(model.getTags());
            post.setClient(model.getClient());
            post.setProjectDate(model.getProjectDate());
+           post.setSubcontract(model.isSubcontract());
            // Validate content type
            String contentType = model.getThumbnail().getContentType();
            MediaType mediaType = ContentTypeHelper.getMediaType(Objects.requireNonNull(contentType));
